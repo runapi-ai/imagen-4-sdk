@@ -1,4 +1,24 @@
-# Imagen API SDK for RunAPI
+<p align="center">
+  <a href="https://runapi.ai"><img src="https://runapi.ai/icon.svg" height="56" alt="RunAPI"></a>
+</p>
+
+<h3 align="center">
+  <a href="https://github.com/runapi-ai/imagen-4-sdk">Imagen 4 API SDK for RunAPI</a>
+</h3>
+
+<p align="center">
+  Imagen 4 API SDKs for JavaScript, Ruby, and Go on RunAPI.
+</p>
+
+<div align="center">
+
+[![npm](https://img.shields.io/npm/v/@runapi.ai/imagen-4)](https://www.npmjs.com/package/@runapi.ai/imagen-4)
+[![RubyGems](https://img.shields.io/gem/v/runapi-imagen-4)](https://rubygems.org/gems/runapi-imagen-4)
+[![Go Reference](https://pkg.go.dev/badge/github.com/runapi-ai/imagen-4-sdk/go.svg)](https://pkg.go.dev/github.com/runapi-ai/imagen-4-sdk/go)
+[![License](https://img.shields.io/github/license/runapi-ai/imagen-4-sdk)](https://github.com/runapi-ai/imagen-4-sdk/blob/main/LICENSE)
+
+</div>
+<br/>
 
 The imagen api SDK packages JavaScript, Ruby, and Go clients for Imagen 4 on RunAPI. Use this imagen api SDK for text-to-image and image-to-image generation workflows that need typed installs, JSON request bodies, task polling, and consistent RunAPI errors across services.
 
@@ -8,7 +28,7 @@ Imagen 4 belongs to the Google catalog on RunAPI. The public model page is https
 
 ```bash
 npm install @runapi.ai/imagen-4
-gem install runapi-imagen_4
+gem install runapi-imagen-4
 go get github.com/runapi-ai/imagen-4-sdk/go@latest
 ```
 
@@ -40,7 +60,7 @@ For short scripts, use `run` with the same JSON body to create the task and wait
 ## Repository layout
 
 - `js/` publishes `@runapi.ai/imagen-4`.
-- `ruby/` publishes `runapi-imagen_4` when RubyGems publishing resumes.
+- `ruby/` publishes `runapi-imagen-4` when RubyGems publishing resumes.
 - `go/` publishes `github.com/runapi-ai/imagen-4-sdk/go` and depends on `github.com/runapi-ai/core-sdk/go`.
 
 ## Public links
@@ -67,7 +87,7 @@ Default pricing link for the imagen api SDK: https://runapi.ai/models/imagen-4/i
 
 ### Which package should I install for imagen api work?
 
-Install the model package for your language: `@runapi.ai/imagen-4`, `runapi-imagen_4`, or `github.com/runapi-ai/imagen-4-sdk/go`. Install core SDK packages only when you are building shared SDK infrastructure.
+Install the model package for your language: `@runapi.ai/imagen-4`, `runapi-imagen-4`, or `github.com/runapi-ai/imagen-4-sdk/go`. Install core SDK packages only when you are building shared SDK infrastructure.
 
 ### Where should public links point?
 
