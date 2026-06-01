@@ -1,6 +1,6 @@
 # Imagen API Ruby SDK for RunAPI
 
-The imagen api Ruby SDK is the language-specific package for Imagen 4 on RunAPI. Use this imagen api package for text-to-image, image-to-image, edit, and creative production flows when your application needs JSON request bodies, task status lookup, and consistent RunAPI errors in Ruby.
+The imagen api Ruby SDK is the language-specific package for Imagen 4 on RunAPI. Use this imagen api package for text-to-image, image editing, and creative production flows when your application needs JSON request bodies, task status lookup, and consistent RunAPI errors in Ruby.
 
 This imagen api README is the Ruby package guide inside the public `imagen4-sdk` repository. For the repository overview, start at `../README.md`; for model details, use https://runapi.ai/models/imagen-4; for API reference, use https://runapi.ai/docs#imagen-4; for SDK docs, use https://runapi.ai/docs#sdk-imagen-4.
 

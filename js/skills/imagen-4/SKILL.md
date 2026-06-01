@@ -34,7 +34,7 @@ Generate and edit images with Imagen 4 through RunAPI. The default path for one-
 
 The `runapi` binary is the runtime dependency. Run `runapi auth status` first. For agents and headless runs, prefer `RUNAPI_API_KEY` or import it into saved config with `printf '%s' "$RUNAPI_API_KEY" | runapi auth import-token --token -`. Use `runapi login` only when the user explicitly wants interactive browser auth.
 
-Inspect the available actions and request fields with CLI help:
+Inspect the available commands and request fields with CLI help:
 
 ```shell
 runapi imagen-4 --help
@@ -54,7 +54,7 @@ runapi imagen-4 text-to-image --async --input-file request.json
 runapi wait <task-id> --service imagen-4 --action text-to-image
 ```
 
-Available actions: `text-to-image`.
+Available commands: `text-to-image`.
 
 ## SDK integration path
 
@@ -67,7 +67,6 @@ When integrating Imagen 4 into an app, backend, worker, or library — not for o
 ## References
 
 - Model overview, pricing, and rate limits: https://runapi.ai/models/imagen-4.md
-- Provider comparison: https://runapi.ai/providers/google.md
 - Full model catalog: https://runapi.ai/models.md
 
 ## Variants
@@ -75,5 +74,4 @@ When integrating Imagen 4 into an app, backend, worker, or library — not for o
 - [Imagen 4](https://runapi.ai/models/imagen-4/imagen-4.md)
 - [Fast](https://runapi.ai/models/imagen-4/fast.md)
 - [Ultra](https://runapi.ai/models/imagen-4/ultra.md)
-- [Pro image to image](https://runapi.ai/models/imagen-4/pro-image-to-image.md)
-
+- [Pro remix image](https://runapi.ai/models/imagen-4/pro-remix-image.md)

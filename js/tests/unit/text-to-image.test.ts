@@ -8,23 +8,34 @@ describe('Imagen4 textToImage', () => {
     (client as any).textToImage.http.request = request;
 
     await client.textToImage.create({
-      model: 'imagen-4-pro-image-to-image',
-      prompt: 'Restyle this image',
-      image_input: ['https://upload.wikimedia.org/wikipedia/commons/a/a9/Example.jpg'],
-      aspect_ratio: 'auto',
-      resolution: '2K',
-      output_format: 'png',
+      model: 'imagen-4-fast',
+      prompt: 'A warm editorial photo',
+      aspect_ratio: '16:9',
+      output_count: 2,
     });
 
     expect(request).toHaveBeenCalledWith('POST', '/api/v1/imagen_4/text_to_image', {
       body: {
-        model: 'imagen-4-pro-image-to-image',
-        prompt: 'Restyle this image',
-        image_input: ['https://upload.wikimedia.org/wikipedia/commons/a/a9/Example.jpg'],
-        aspect_ratio: 'auto',
-        resolution: '2K',
-        output_format: 'png',
+        model: 'imagen-4-fast',
+        prompt: 'A warm editorial photo',
+        aspect_ratio: '16:9',
+        output_count: 2,
       },
     });
+  });
+
+  it('decodes completed responses with image objects', async () => {
+    const request = vi.fn().mockResolvedValue({
+      id: 'task_123',
+      status: 'completed',
+      images: [{ url: 'https://file.runapi.ai/generated/image.png' }],
+    });
+    const client = new Imagen4Client({ apiKey: 'test' });
+    (client as any).textToImage.http.request = request;
+
+    const result = await client.textToImage.get('task_123');
+
+    expect(request).toHaveBeenCalledWith('GET', '/api/v1/imagen_4/text_to_image/task_123', {});
+    expect(result.images).toEqual([{ url: 'https://file.runapi.ai/generated/image.png' }]);
   });
 });

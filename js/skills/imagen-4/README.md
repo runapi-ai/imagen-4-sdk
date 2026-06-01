@@ -21,7 +21,7 @@
 </div>
 <br/>
 
-Generate images with Imagen 4, Imagen 4 Fast, Ultra, and Pro image-to-image. This skill helps Claude Code, Codex, Gemini CLI, Cursor, and 50+ agents integrate Imagen 4 through RunAPI.
+Generate images with Imagen 4, Imagen 4 Fast, Ultra, and Pro remix image. This skill helps Claude Code, Codex, Gemini CLI, Cursor, and 50+ agents integrate Imagen 4 through RunAPI.
 
 The canonical agent file is `skills/imagen-4/SKILL.md`.
 
@@ -64,7 +64,6 @@ const result = await client.textToImage.run({
 - SDK docs: https://runapi.ai/docs#sdk-imagen-4
 - SDK repository: https://github.com/runapi-ai/imagen-4-sdk
 - Pricing and rate limits: https://runapi.ai/models/imagen-4/imagen-4
-- Provider comparison: https://runapi.ai/providers/google
 - Browse all RunAPI models and skills: https://runapi.ai/models
 
 ## Variants
@@ -72,7 +71,7 @@ const result = await client.textToImage.run({
 - [Imagen 4](https://runapi.ai/models/imagen-4/imagen-4)
 - [Fast](https://runapi.ai/models/imagen-4/fast)
 - [Ultra](https://runapi.ai/models/imagen-4/ultra)
-- [Pro image to image](https://runapi.ai/models/imagen-4/pro-image-to-image)
+- [Pro remix image](https://runapi.ai/models/imagen-4/pro-remix-image)
 
 ## Agent rules
 
