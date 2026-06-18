@@ -3,6 +3,8 @@
 module RunApi
   module Imagen4
     module Resources
+      # Imagen 4 text-to-image generation resource.
+      # Generate images from text with three quality tiers; imagen-4-fast supports batch output.
       class TextToImage
         include RunApi::Core::ResourceHelpers
 

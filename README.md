@@ -82,6 +82,10 @@ Use the most specific imagen api variant page for pricing, rate limits, and comm
 
 Default pricing link for the imagen api SDK: https://runapi.ai/models/imagen-4/imagen-4
 
+## Generated file storage
+
+RunAPI-generated file URLs are temporary. Download and store generated images, videos, audio, or other files in your own durable storage within 7 days; do not treat returned URLs as long-term assets.
+
 ## FAQ
 
 ### Which package should I install for imagen api work?

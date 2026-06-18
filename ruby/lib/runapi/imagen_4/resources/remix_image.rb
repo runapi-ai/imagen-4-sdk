@@ -3,6 +3,8 @@
 module RunApi
   module Imagen4
     module Resources
+      # Imagen 4 image remix resource.
+      # Transform source images guided by a text prompt (up to 8 source images).
       class RemixImage
         include RunApi::Core::ResourceHelpers
 
