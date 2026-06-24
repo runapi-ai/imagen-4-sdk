@@ -7,61 +7,103 @@
 </h3>
 
 <p align="center">
-  Imagen 4 API SDKs for JavaScript, Ruby, and Go on RunAPI.
+  Imagen 4 API SDKs for JavaScript, Python, Ruby, Go, and Java on RunAPI.
 </p>
 
 <div align="center">
 
 [![npm](https://img.shields.io/npm/v/@runapi.ai/imagen-4)](https://www.npmjs.com/package/@runapi.ai/imagen-4)
-[![RubyGems](https://img.shields.io/gem/v/runapi-imagen-4)](https://rubygems.org/gems/runapi-imagen-4)
+[![PyPI](https://img.shields.io/pypi/v/runapi-imagen-4)](https://pypi.org/project/runapi-imagen-4/)
+[![RubyGems](https://img.shields.io/gem/v/runapi-imagen_4)](https://rubygems.org/gems/runapi-imagen_4)
 [![Go Reference](https://pkg.go.dev/badge/github.com/runapi-ai/imagen-4-sdk/go.svg)](https://pkg.go.dev/github.com/runapi-ai/imagen-4-sdk/go)
+[![Maven Central](https://img.shields.io/maven-central/v/ai.runapi/runapi-imagen-4)](https://central.sonatype.com/artifact/ai.runapi/runapi-imagen-4)
 [![License](https://img.shields.io/github/license/runapi-ai/imagen-4-sdk)](https://github.com/runapi-ai/imagen-4-sdk/blob/main/LICENSE)
 
 </div>
 <br/>
 
-The imagen api SDK packages JavaScript, Ruby, and Go clients for Imagen 4 on RunAPI. Use this imagen api SDK for text-to-image and remix image workflows that need typed installs, JSON request bodies, task polling, and consistent RunAPI errors across services.
+The Imagen 4 API SDK packages JavaScript, Python, Ruby, Go, and Java clients for Imagen 4 on RunAPI. Use it for text-to-image and remix-image workflows when your app needs typed request builders, predictable task polling, file upload helpers, account helpers, and consistent RunAPI errors.
 
-The public model page is https://runapi.ai/models/imagen-4; variant pages below carry pricing, rate-limit, and commercial-usage details. The public `imagen-4-sdk` repository groups the JavaScript, Ruby, and Go packages for this model.
+Imagen 4 is listed in the RunAPI model catalog at https://runapi.ai/models/imagen-4. Variant pages below carry pricing, rate-limit, and commercial-usage details. The public `imagen-4-sdk` repository groups the language packages, examples, CI, and release tags for this model.
 
 ## Install
 
 ```bash
 npm install @runapi.ai/imagen-4
-gem install runapi-imagen-4
+pip install runapi-imagen-4
+gem install runapi-imagen_4
 go get github.com/runapi-ai/imagen-4-sdk/go@latest
+```
+
+Gradle:
+
+```kotlin
+dependencies {
+  implementation("ai.runapi:runapi-imagen-4:0.1.0")
+}
+```
+
+Maven:
+
+```xml
+<dependency>
+  <groupId>ai.runapi</groupId>
+  <artifactId>runapi-imagen-4</artifactId>
+  <version>0.1.0</version>
+</dependency>
+```
+
+Use the Java BOM when installing multiple RunAPI Java modules:
+
+```kotlin
+dependencies {
+  implementation(platform("ai.runapi:runapi-bom:0.1.0"))
+  implementation("ai.runapi:runapi-imagen-4")
+}
 ```
 
 ## What you can build
 
-- Build creative tools, agent pipelines, and production integrations with the imagen api SDK.
-- Keep one model-specific repository while installing only the language package your app needs.
+- Build apps, agent workflows, batch jobs, and production services around Imagen 4 requests.
+- Install only the language package your app needs while keeping one model-specific repository for docs and releases.
 - Use `create` for submit-only jobs, `get` for status lookup, and `run` for submit-and-poll scripts.
-- Handle authentication, validation, rate limits, insufficient credits, task failures, and polling timeouts through RunAPI SDK errors.
+- Upload local files, URL files, or base64 files through shared RunAPI file helpers.
+- Handle validation, authentication, rate limits, insufficient credits, task failures, and polling timeouts through RunAPI SDK errors.
 
-The JavaScript client exposes text-to-image and remix-image resources, and the Ruby and Go packages mirror the same RunAPI task lifecycle.
+## Java quick start
 
-## JavaScript quick start
+```java
+import ai.runapi.imagen4.Imagen4Client;
+import ai.runapi.imagen4.types.TextToImageParams;
+import ai.runapi.imagen4.types.CompletedTextToImageResponse;
+import ai.runapi.imagen4.types.TextToImageModel;
 
-```typescript
-import { Imagen4Client } from '@runapi.ai/imagen-4';
+Imagen4Client client = Imagen4Client.builder()
+    .apiKey(System.getenv("RUNAPI_API_KEY"))
+    .build();
 
-const client = new Imagen4Client();
-
-const task = await client.textToImage.create({
-  // Pass the Imagen 4 request body documented at https://runapi.ai/docs#imagen-4.
-});
-
-const status = await client.textToImage.get(task.id);
+CompletedTextToImageResponse result = client.textToImage().run(
+    TextToImageParams.builder()
+        .model(TextToImageModel.IMAGEN_4)
+        .prompt("A magazine cover photo of a red bicycle by the sea")
+        .aspectRatio("4:3")
+        .build()
+);
 ```
 
-For short scripts, use `run` with the same JSON body to create the task and wait for completion. For web request handlers, prefer `create` plus webhook or later `get` polling so the server does not hold a worker open.
+Java packages target Java 8 bytecode and are tested on Java 8, 11, 17, and 21. Each model artifact depends on `ai.runapi:runapi-core`, so application code normally installs only `ai.runapi:runapi-imagen-4`.
+
+## Task lifecycle
+
+Most media endpoints are asynchronous. `create()` submits a task and returns its id, `get(id)` fetches the latest task state, and `run(params)` creates the task and polls until it reaches a terminal state. In web request handlers, prefer `create()` plus webhook or later `get()` polling so the server does not hold a worker open.
 
 ## Repository layout
 
 - `js/` publishes `@runapi.ai/imagen-4`.
-- `ruby/` publishes `runapi-imagen-4` when RubyGems publishing resumes.
+- `python/` publishes `runapi-imagen-4`.
+- `ruby/` publishes `runapi-imagen_4` when RubyGems publishing resumes.
 - `go/` publishes `github.com/runapi-ai/imagen-4-sdk/go` and depends on `github.com/runapi-ai/core-sdk/go`.
+- `java/` publishes `ai.runapi:runapi-imagen-4` and depends on `ai.runapi:runapi-core`.
 
 ## Public links
 
@@ -70,31 +112,32 @@ For short scripts, use `run` with the same JSON body to create the task and wait
 - Product docs: https://runapi.ai/docs#imagen-4
 - SDK repository: https://github.com/runapi-ai/imagen-4-sdk
 - Skill repository: https://github.com/runapi-ai/imagen-4
+- Provider comparison: https://runapi.ai/providers/google
 - Full catalog: https://runapi.ai/models
 
 ## Pricing and variants
 
-Use the most specific imagen api variant page for pricing, rate limits, and commercial usage:
+Use the most specific Imagen 4 variant page for pricing, rate limits, and commercial usage:
 - [Imagen 4](https://runapi.ai/models/imagen-4/imagen-4)
 - [Fast](https://runapi.ai/models/imagen-4/fast)
 - [Ultra](https://runapi.ai/models/imagen-4/ultra)
 - [Pro remix image](https://runapi.ai/models/imagen-4/pro-remix-image)
 
-Default pricing link for the imagen api SDK: https://runapi.ai/models/imagen-4/imagen-4
+Default pricing link for the Imagen 4 SDK: https://runapi.ai/models/imagen-4/imagen-4
 
-## Generated file storage
+## File storage
 
 RunAPI-generated file URLs are temporary. Download and store generated images, videos, audio, or other files in your own durable storage within 7 days; do not treat returned URLs as long-term assets.
 
 ## FAQ
 
-### Which package should I install for imagen api work?
+### Which package should I install for Imagen 4 work?
 
-Install the model package for your language: `@runapi.ai/imagen-4`, `runapi-imagen-4`, or `github.com/runapi-ai/imagen-4-sdk/go`. Install core SDK packages only when you are building shared SDK infrastructure.
+Install the model package for your language: `@runapi.ai/imagen-4` on npm, `runapi-imagen-4` on PyPI, `runapi-imagen_4` on RubyGems, `github.com/runapi-ai/imagen-4-sdk/go`, or `ai.runapi:runapi-imagen-4`. Install core SDK packages only when you are building shared SDK infrastructure.
 
 ### Where should public links point?
 
-Primary imagen api links point to https://runapi.ai/models/imagen-4. Pricing and usage-policy links point to variant pages such as https://runapi.ai/models/imagen-4/imagen-4, and broad browsing points to https://runapi.ai/models.
+Primary Imagen 4 links point to https://runapi.ai/models/imagen-4. Pricing and usage-policy links point to variant pages such as https://runapi.ai/models/imagen-4/imagen-4. Provider comparisons point to https://runapi.ai/providers/google, and broad browsing points to https://runapi.ai/models.
 
 ## License
 

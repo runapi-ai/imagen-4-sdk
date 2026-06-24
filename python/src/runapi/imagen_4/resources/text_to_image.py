@@ -6,10 +6,8 @@ from typing import Any, Dict
 
 from runapi.core import Resource, ValidationError
 
+from ..contract_gen import CONTRACT
 from ..types import (
-    MODELS,
-    OUTPUT_COUNTS,
-    TEXT_ASPECT_RATIOS,
     CompletedTextToImageResponse,
     TextToImageResponse,
 )
@@ -45,6 +43,7 @@ class TextToImage(Resource):
             The task creation result with an id.
         """
         compacted = self._compact_params(params)
+        self._validate_contract(CONTRACT["text-to-image"], compacted)
         self._validate_params(compacted)
         return self._request("post", self.ENDPOINT, body=compacted)
 
@@ -60,22 +59,8 @@ class TextToImage(Resource):
         return self._request("get", f"{self.ENDPOINT}/{id}")
 
     def _validate_params(self, params: Dict[str, Any]) -> None:
-        if not params.get("model"):
-            raise ValidationError("model is required")
         if not params.get("prompt"):
             raise ValidationError("prompt is required")
 
-        model = params.get("model")
-        if model not in MODELS:
-            raise ValidationError(f"Invalid model: {model}. Must be: {', '.join(MODELS)}")
-
-        self._validate_text_params(params, model)
-
-    def _validate_text_params(self, params: Dict[str, Any], model: str) -> None:
-        self._validate_optional(params, "aspect_ratio", TEXT_ASPECT_RATIOS)
-        if not params.get("output_count"):
-            return
-
-        if model != "imagen-4-fast":
+        if params.get("output_count") and params.get("model") != "imagen-4-fast":
             raise ValidationError("output_count is only supported for imagen-4-fast")
-        self._validate_optional(params, "output_count", OUTPUT_COUNTS)

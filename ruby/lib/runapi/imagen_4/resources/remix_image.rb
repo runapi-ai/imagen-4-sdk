@@ -35,22 +35,11 @@ module RunApi
         private
 
         def validate_params!(params)
-          model = param(params, :model)
-          raise Core::ValidationError, "model is required" unless model
-          unless Types::REMIX_MODELS.include?(model)
-            raise Core::ValidationError, "Invalid model: #{model}. Must be one of: #{Types::REMIX_MODELS.join(", ")}"
-          end
+          validate_contract!(CONTRACT["remix-image"], params)
+
           raise Core::ValidationError, "prompt is required" unless param(params, :prompt)
 
-          validate_source_image_urls!(params)
-          validate_optional!(params, :aspect_ratio, Types::PRO_ASPECT_RATIOS)
-          validate_optional!(params, :output_resolution, Types::OUTPUT_RESOLUTIONS)
-          validate_optional!(params, :output_format, Types::OUTPUT_FORMATS)
-        end
-
-        def validate_source_image_urls!(params)
           urls = param(params, :source_image_urls)
-          raise Core::ValidationError, "source_image_urls is required" if urls.nil? || (urls.respond_to?(:empty?) && urls.empty?)
           return unless urls.respond_to?(:size) && urls.size > SOURCE_IMAGE_URLS_MAX
 
           raise Core::ValidationError, "source_image_urls supports up to #{SOURCE_IMAGE_URLS_MAX} images"

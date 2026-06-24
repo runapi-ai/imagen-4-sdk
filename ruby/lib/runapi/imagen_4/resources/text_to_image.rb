@@ -34,21 +34,13 @@ module RunApi
         private
 
         def validate_params!(params)
-          raise Core::ValidationError, "model is required" unless param(params, :model)
+          validate_contract!(CONTRACT["text-to-image"], params)
+
           raise Core::ValidationError, "prompt is required" unless param(params, :prompt)
 
-          model = param(params, :model)
-          raise Core::ValidationError, "Invalid model: #{model}. Must be: #{Types::MODELS.join(", ")}" unless Types::MODELS.include?(model)
-
-          validate_text_params!(params, model)
-        end
-
-        def validate_text_params!(params, model)
-          validate_optional!(params, :aspect_ratio, Types::TEXT_ASPECT_RATIOS)
-          return unless param(params, :output_count)
-
-          raise Core::ValidationError, "output_count is only supported for imagen-4-fast" unless model == "imagen-4-fast"
-          validate_optional!(params, :output_count, Types::OUTPUT_COUNTS)
+          if param(params, :output_count) && param(params, :model) != "imagen-4-fast"
+            raise Core::ValidationError, "output_count is only supported for imagen-4-fast"
+          end
         end
       end
     end

@@ -7,13 +7,13 @@ This imagen api README is the Ruby package guide inside the public `imagen4-sdk`
 ## Install
 
 ```bash
-gem install runapi-imagen4
+gem install runapi-imagen_4
 ```
 
 ## Quick start
 
 ```ruby
-require "runapi-imagen4"
+require "runapi-imagen_4"
 
 client = RunApi::Imagen4::Client.new
 task = client.generations.create(

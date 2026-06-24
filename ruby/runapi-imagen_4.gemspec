@@ -3,8 +3,9 @@
 Dir.chdir(__dir__) do
 
   Gem::Specification.new do |spec|
-    spec.name = "runapi-imagen-4"
+    spec.name = "runapi-imagen_4"
     spec.version = "0.2.6"
+    spec.metadata["runapi_slug"] = "imagen-4"
     spec.authors = ["RunAPI"]
     spec.email = ["contact@runapi.ai"]
     spec.summary = "Imagen API Ruby SDK for RunAPI"
@@ -16,7 +17,6 @@ Dir.chdir(__dir__) do
     spec.metadata["documentation_uri"] = "https://github.com/runapi-ai/imagen-4-sdk/blob/main/ruby/README.md"
     spec.metadata["source_code_uri"] = "https://github.com/runapi-ai/imagen-4-sdk"
     spec.metadata["changelog_uri"] = "https://github.com/runapi-ai/imagen-4-sdk/blob/main/CHANGELOG.md"
-
 
     spec.files = Dir.glob("lib/**/*") + %w[LICENSE README.md]
     spec.extra_rdoc_files = ["README.md"]

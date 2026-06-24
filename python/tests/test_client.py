@@ -147,13 +147,19 @@ def test_remix_run_narrows_completed_type():
 
 def test_rejects_unknown_model():
     client = Imagen4Client(api_key="k", http_client=FakeHttp())
-    with pytest.raises(ValidationError, match="Invalid model: nope. Must be:"):
+    with pytest.raises(
+        ValidationError,
+        match="model must be one of: imagen-4, imagen-4-fast, imagen-4-ultra",
+    ):
         client.text_to_image.create(model="nope", prompt="hi there")
 
 
 def test_requires_model():
     client = Imagen4Client(api_key="k", http_client=FakeHttp())
-    with pytest.raises(ValidationError, match="model is required"):
+    with pytest.raises(
+        ValidationError,
+        match="model must be one of: imagen-4, imagen-4-fast, imagen-4-ultra",
+    ):
         client.text_to_image.create(prompt="hi there")
 
 
@@ -190,7 +196,7 @@ def test_output_count_rejects_out_of_range_for_fast():
 
 def test_remix_rejects_non_remix_model():
     client = Imagen4Client(api_key="k", http_client=FakeHttp())
-    with pytest.raises(ValidationError, match="Invalid model: imagen-4. Must be one of:"):
+    with pytest.raises(ValidationError, match="model must be one of: imagen-4-pro-remix-image"):
         client.remix_image.create(model="imagen-4", prompt="hi", source_image_urls=["https://x/a.png"])
 
 
