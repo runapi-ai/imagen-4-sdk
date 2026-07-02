@@ -1,8 +1,8 @@
-# Imagen API Go SDK for RunAPI
+# Imagen 4 API Go SDK for RunAPI
 
-The imagen api Go SDK is the language-specific package for Imagen 4 on RunAPI. Use this imagen api package for text-to-image, image editing, and creative production flows when your application needs JSON request bodies, task status lookup, and consistent RunAPI errors in Go.
+The Imagen 4 Go SDK is the language-specific package for Imagen 4 on RunAPI. Use this package for image generation, image editing, and creative production workflows when your application needs request bodies, task status lookup, and consistent RunAPI errors in Go.
 
-This imagen api README is the Go package guide inside the public `imagen4-sdk` repository. For the repository overview, start at `../README.md`; for model details, use https://runapi.ai/models/imagen-4; for API reference, use https://runapi.ai/docs#imagen-4; for SDK docs, use https://runapi.ai/docs#sdk-imagen-4.
+This README is the Go package guide inside the public `imagen-4-sdk` repository. For the repository overview, start at `../README.md`; for model details, use https://runapi.ai/models/imagen-4; for API reference, use https://runapi.ai/docs#imagen-4; for SDK docs, use https://runapi.ai/docs#sdk-imagen-4.
 
 ## Install
 
@@ -16,14 +16,14 @@ go get github.com/runapi-ai/imagen4-sdk/go@latest
 import (
   "context"
 
-  "github.com/runapi-ai/imagen4-sdk/go/imagen4"
+  "github.com/runapi-ai/imagen-4-sdk/go/imagen4"
 )
 
 client, err := imagen4.NewClient()
-task, err := client.Generations.Create(context.Background(), imagen4.GenerationParams{
+task, err := client.TextToImage.Create(context.Background(), imagen4.TextToImageParams{
   // Pass the Imagen 4 JSON request body from https://runapi.ai/docs#imagen-4.
 })
-status, err := client.Generations.Get(context.Background(), task.ID)
+status, err := client.TextToImage.Get(context.Background(), task.ID)
 ```
 
 Use `create` when you want to submit a task and return quickly, `get` when you need the latest task state, and `run` when a script should create and poll until completion. In web request handlers, prefer `create` plus webhook or later `get` polling so a worker is not held open.
@@ -32,7 +32,7 @@ RunAPI-generated file URLs are temporary. Download and store generated images, v
 
 ## Language notes
 
-Use the public Go module with `github.com/runapi-ai/core-sdk/go` options when building image services, CLIs, or workers. The available resources include generations. Keep `RUNAPI_API_KEY` in the environment or your secret manager; never commit API keys or callback secrets.
+Use the public Go module with `github.com/runapi-ai/core-sdk/go` options when building image services, CLIs, or workers. The available resources are `TextToImage` and `RemixImage`. Keep `RUNAPI_API_KEY` in the environment or your secret manager; never commit API keys or callback secrets.
 
 ## Links
 

@@ -1,25 +1,25 @@
-# Imagen API JavaScript SDK for RunAPI
+# Imagen 4 API JavaScript SDK for RunAPI
 
-The imagen api JavaScript SDK is the language-specific package for Imagen 4 on RunAPI. Use this imagen api package for text-to-image, image editing, and creative production flows when your application needs JSON request bodies, task status lookup, and consistent RunAPI errors in JavaScript.
+The Imagen 4 JavaScript SDK is the language-specific package for Imagen 4 on RunAPI. Use this package for image generation, image editing, and creative production workflows when your application needs request bodies, task status lookup, and consistent RunAPI errors in JavaScript.
 
-This imagen api README is the JavaScript package guide inside the public `imagen4-sdk` repository. For the repository overview, start at `../README.md`; for model details, use https://runapi.ai/models/imagen-4; for API reference, use https://runapi.ai/docs#imagen-4; for SDK docs, use https://runapi.ai/docs#sdk-imagen-4.
+This README is the JavaScript package guide inside the public `imagen-4-sdk` repository. For the repository overview, start at `../README.md`; for model details, use https://runapi.ai/models/imagen-4; for API reference, use https://runapi.ai/docs#imagen-4; for SDK docs, use https://runapi.ai/docs#sdk-imagen-4.
 
 ## Install
 
 ```bash
-npm install @runapi.ai/imagen4
+npm install @runapi.ai/imagen-4
 ```
 
 ## Quick start
 
 ```typescript
-import { Imagen4Client } from '@runapi.ai/imagen4';
+import { Imagen4Client } from '@runapi.ai/imagen-4';
 
 const client = new Imagen4Client();
-const task = await client.generations.create({
+const task = await client.textToImage.create({
   // Pass the Imagen 4 JSON request body from https://runapi.ai/docs#imagen-4.
 });
-const status = await client.generations.get(task.id);
+const status = await client.textToImage.get(task.id);
 ```
 
 Use `create` when you want to submit a task and return quickly, `get` when you need the latest task state, and `run` when a script should create and poll until completion. In web request handlers, prefer `create` plus webhook or later `get` polling so a worker is not held open.
@@ -28,7 +28,7 @@ RunAPI-generated file URLs are temporary. Download and store generated images, v
 
 ## Language notes
 
-Use the TypeScript types in `src/types.ts` and the resource classes under `src/resources` when building image applications. The available resources include generations. Keep `RUNAPI_API_KEY` in the environment or your secret manager; never commit API keys or callback secrets.
+Use the TypeScript types in `src/types.ts` and the resource classes under `src/resources` when building image applications. The available resources are `textToImage` and `remixImage`. Keep `RUNAPI_API_KEY` in the environment or your secret manager; never commit API keys or callback secrets.
 
 ## Links
 

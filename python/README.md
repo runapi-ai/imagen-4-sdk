@@ -1,8 +1,8 @@
-# Imagen 4 Python SDK for RunAPI
+# Imagen 4 API Python SDK for RunAPI
 
-The Imagen 4 Python SDK is the language-specific package for Imagen 4 on RunAPI. Use this imagen api package for text-to-image, image editing, and creative production flows when your application needs JSON request bodies, task status lookup, and consistent RunAPI errors in Python.
+The Imagen 4 Python SDK is the language-specific package for Imagen 4 on RunAPI. Use this package for image generation, image editing, and creative production workflows when your application needs request bodies, task status lookup, and consistent RunAPI errors in Python.
 
-This imagen api README is the Python package guide inside the public `imagen4-sdk` repository. For the repository overview, start at `../README.md`; for model details, use https://runapi.ai/models/imagen-4; for API reference, use https://runapi.ai/docs#imagen-4; for SDK docs, use https://runapi.ai/docs#sdk-imagen-4.
+This README is the Python package guide inside the public `imagen-4-sdk` repository. For the repository overview, start at `../README.md`; for model details, use https://runapi.ai/models/imagen-4; for API reference, use https://runapi.ai/docs#imagen-4; for SDK docs, use https://runapi.ai/docs#sdk-imagen-4.
 
 ## Install
 
@@ -27,7 +27,7 @@ status = client.text_to_image.get(task.id)
 remix = client.remix_image.create(
     model="imagen-4-pro-remix-image",
     prompt="Make it golden hour",
-    source_image_urls=["https://example.com/source.jpg"],
+    source_image_urls=["https://cdn.runapi.ai/public/samples/image.jpg"],
 )
 ```
 

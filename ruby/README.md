@@ -1,8 +1,8 @@
-# Imagen API Ruby SDK for RunAPI
+# Imagen 4 API Ruby SDK for RunAPI
 
-The imagen api Ruby SDK is the language-specific package for Imagen 4 on RunAPI. Use this imagen api package for text-to-image, image editing, and creative production flows when your application needs JSON request bodies, task status lookup, and consistent RunAPI errors in Ruby.
+The Imagen 4 Ruby SDK is the language-specific package for Imagen 4 on RunAPI. Use this package for image generation, image editing, and creative production workflows when your application needs request bodies, task status lookup, and consistent RunAPI errors in Ruby.
 
-This imagen api README is the Ruby package guide inside the public `imagen4-sdk` repository. For the repository overview, start at `../README.md`; for model details, use https://runapi.ai/models/imagen-4; for API reference, use https://runapi.ai/docs#imagen-4; for SDK docs, use https://runapi.ai/docs#sdk-imagen-4.
+This README is the Ruby package guide inside the public `imagen-4-sdk` repository. For the repository overview, start at `../README.md`; for model details, use https://runapi.ai/models/imagen-4; for API reference, use https://runapi.ai/docs#imagen-4; for SDK docs, use https://runapi.ai/docs#sdk-imagen-4.
 
 ## Install
 
@@ -16,10 +16,10 @@ gem install runapi-imagen_4
 require "runapi-imagen_4"
 
 client = RunApi::Imagen4::Client.new
-task = client.generations.create(
+task = client.text_to_image.create(
   # Pass the Imagen 4 JSON request body from https://runapi.ai/docs#imagen-4.
 )
-status = client.generations.get(task.id)
+status = client.text_to_image.get(task.id)
 ```
 
 Use `create` when you want to submit a task and return quickly, `get` when you need the latest task state, and `run` when a script should create and poll until completion. In web request handlers, prefer `create` plus webhook or later `get` polling so a worker is not held open.
@@ -28,7 +28,7 @@ RunAPI-generated file URLs are temporary. Download and store generated images, v
 
 ## Language notes
 
-Use Ruby keyword arguments and the `RunApi::Imagen4` error classes when building image jobs, Rails workers, or scripts. The available resources include generations. Keep `RUNAPI_API_KEY` in the environment or your secret manager; never commit API keys or callback secrets.
+Use Ruby keyword arguments and the `RunApi::Imagen4` error classes when building image jobs, Rails workers, or scripts. The available resources are `text_to_image` and `remix_image`. Keep `RUNAPI_API_KEY` in the environment or your secret manager; never commit API keys or callback secrets.
 
 ## Links
 
