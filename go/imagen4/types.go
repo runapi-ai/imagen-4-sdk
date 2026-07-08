@@ -6,7 +6,7 @@ package imagen4
 type Model string
 
 // AspectRatio controls the output image dimensions.
-// Text-to-image supports "1:1", "16:9", "9:16", "3:4", "4:3".
+// Text-to-image supports "1:1", "16:9", "9:16", "3:4", and "4:3"; imagen-4-fast also supports "auto".
 // Remix-image additionally supports "2:3", "3:2", "4:5", "5:4", "21:9", and "auto".
 type AspectRatio string
 
@@ -21,7 +21,6 @@ type TaskStatus string
 
 // TextToImageParams configures text-to-image generation.
 // Use NegativePrompt to discourage specific visual elements.
-// OutputCount is only supported by imagen-4-fast (1-4 images); other models produce a single image.
 type TextToImageParams struct {
 	Model          Model       `json:"model" help:"required; model slug"`
 	Prompt         string      `json:"prompt" help:"required; text prompt up to 5000 chars"`
@@ -29,7 +28,6 @@ type TextToImageParams struct {
 	NegativePrompt string      `json:"negative_prompt,omitempty" help:"optional; content to discourage for Imagen 4 models"`
 	AspectRatio    AspectRatio `json:"aspect_ratio,omitempty" help:"optional; output aspect ratio"`
 	Seed           *int        `json:"seed,omitempty" help:"optional; reproducible generation seed"`
-	OutputCount    int         `json:"output_count,omitempty" help:"optional; number of generated images"`
 }
 
 // RemixImageParams configures image-guided generation.

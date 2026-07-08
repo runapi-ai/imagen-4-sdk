@@ -7,13 +7,13 @@ This README is the Ruby package guide inside the public `imagen-4-sdk` repositor
 ## Install
 
 ```bash
-gem install runapi-imagen_4
+gem install runapi-imagen-4
 ```
 
 ## Quick start
 
 ```ruby
-require "runapi-imagen_4"
+require "runapi/imagen_4"
 
 client = RunApi::Imagen4::Client.new
 task = client.text_to_image.create(

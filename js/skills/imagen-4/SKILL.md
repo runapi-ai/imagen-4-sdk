@@ -36,7 +36,7 @@ Generate and edit images with Imagen 4 through RunAPI. The default path for one-
 When integrating Imagen 4 into an app, backend, worker, library, Rails service, Node service, Go service, webhook pipeline, or production workflow, start by checking the current SDK package and official usage. Confirm install commands, client methods (`create`, `get`, `run`), request fields, response shape, and error classes before using CLI help or raw HTTP examples. Use a RunAPI SDK package:
 
 - JavaScript / TypeScript: `@runapi.ai/imagen-4`
-- Ruby: `runapi-imagen_4`
+- Ruby: `runapi-imagen-4`
 - Go: `github.com/runapi-ai/imagen-4-sdk/go`
 
 ## CLI path

@@ -12,7 +12,6 @@ public final class TextToImageParams {
   private final String negativePrompt;
   private final String aspectRatio;
   private final Integer seed;
-  private final Integer outputCount;
 
   private TextToImageParams(Builder builder) {
     this.model = builder.model;
@@ -21,7 +20,6 @@ public final class TextToImageParams {
     this.negativePrompt = builder.negativePrompt;
     this.aspectRatio = builder.aspectRatio;
     this.seed = builder.seed;
-    this.outputCount = builder.outputCount;
   }
 
   /** Creates a new TextToImageParams builder. */
@@ -43,7 +41,6 @@ public final class TextToImageParams {
     raw.put("negative_prompt", Imagen4ParamUtils.wireValue(negativePrompt));
     raw.put("aspect_ratio", Imagen4ParamUtils.wireValue(aspectRatio));
     raw.put("seed", Imagen4ParamUtils.wireValue(seed));
-    raw.put("output_count", Imagen4ParamUtils.wireValue(outputCount));
     return Imagen4ParamUtils.compact(raw);
   }
 
@@ -57,7 +54,6 @@ public final class TextToImageParams {
     private String negativePrompt;
     private String aspectRatio;
     private Integer seed;
-    private Integer outputCount;
 
     private Builder() {}
 
@@ -101,12 +97,6 @@ public final class TextToImageParams {
     /** Sets the random seed. */
     public Builder seed(int value) {
       this.seed = value;
-      return this;
-    }
-
-    /** Sets the number of generated outputs. */
-    public Builder outputCount(int value) {
-      this.outputCount = value;
       return this;
     }
 

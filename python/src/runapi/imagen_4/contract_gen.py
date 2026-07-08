@@ -25,20 +25,13 @@ CONTRACT = {
                 "aspect_ratio": {
                     "enum": ["1:1", "16:9", "9:16", "3:4", "4:3"]
                 },
-                "output_count": {
-                    "type": "integer"
-                },
                 "seed": {
                     "type": "integer"
                 }
             },
             "imagen-4-fast": {
                 "aspect_ratio": {
-                    "enum": ["1:1", "16:9", "9:16", "3:4", "4:3"]
-                },
-                "output_count": {
-                    "enum": [1, 2, 3, 4],
-                    "type": "integer"
+                    "enum": ["1:1", "16:9", "9:16", "3:4", "4:3", "auto"]
                 },
                 "seed": {
                     "type": "integer"
@@ -47,9 +40,6 @@ CONTRACT = {
             "imagen-4-ultra": {
                 "aspect_ratio": {
                     "enum": ["1:1", "16:9", "9:16", "3:4", "4:3"]
-                },
-                "output_count": {
-                    "type": "integer"
                 },
                 "seed": {
                     "type": "integer"

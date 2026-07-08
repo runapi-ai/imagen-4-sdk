@@ -8,8 +8,8 @@ const ENDPOINT = '/api/v1/imagen_4/text_to_image';
 
 /**
  * Generates images from a text prompt.
- * Three model tiers are available: imagen-4 (standard), imagen-4-fast (lower latency,
- * batch output up to 4 images), and imagen-4-ultra (highest quality).
+ * Three model tiers are available: imagen-4 (standard), imagen-4-fast (lower latency),
+ * and imagen-4-ultra (highest quality).
  */
 export class TextToImage {
   constructor(private readonly http: HttpClient) {}

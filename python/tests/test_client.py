@@ -76,9 +76,7 @@ def test_exposes_resource_accessors():
 def test_create_posts_compacted_body():
     fake = FakeHttp({"id": "t1", "status": "pending"})
     client = Imagen4Client(api_key="k", http_client=fake)
-    result = client.text_to_image.create(
-        model="imagen-4", prompt="hello world", aspect_ratio="1:1", output_count=None
-    )
+    result = client.text_to_image.create(model="imagen-4", prompt="hello world", aspect_ratio="1:1")
     assert fake.calls == [
         ("post", "/api/v1/imagen_4/text_to_image", {"model": "imagen-4", "prompt": "hello world", "aspect_ratio": "1:1"}),
     ]
@@ -175,23 +173,11 @@ def test_rejects_invalid_aspect_ratio():
         client.text_to_image.create(model="imagen-4", prompt="hi there", aspect_ratio="2:3")
 
 
-def test_output_count_only_for_fast():
-    client = Imagen4Client(api_key="k", http_client=FakeHttp())
-    with pytest.raises(ValidationError, match="output_count is only supported for imagen-4-fast"):
-        client.text_to_image.create(model="imagen-4", prompt="hi there", output_count=2)
-
-
-def test_output_count_allowed_for_fast():
+def test_auto_aspect_ratio_allowed_for_fast():
     fake = FakeHttp({"id": "t1", "status": "pending"})
     client = Imagen4Client(api_key="k", http_client=fake)
-    client.text_to_image.create(model="imagen-4-fast", prompt="hi there", output_count=2)
-    assert fake.calls[0][2]["output_count"] == 2
-
-
-def test_output_count_rejects_out_of_range_for_fast():
-    client = Imagen4Client(api_key="k", http_client=FakeHttp())
-    with pytest.raises(ValidationError, match="output_count"):
-        client.text_to_image.create(model="imagen-4-fast", prompt="hi there", output_count=9)
+    client.text_to_image.create(model="imagen-4-fast", prompt="hi there", aspect_ratio="auto")
+    assert fake.calls[0][2]["aspect_ratio"] == "auto"
 
 
 def test_remix_rejects_non_remix_model():

@@ -7,14 +7,14 @@
 </h3>
 
 <p align="center">
-  Imagen 4 API SDKs for JavaScript, Python, Ruby, Go, and Java on RunAPI.
+  Imagen 4 API SDKs for JavaScript, Python, Ruby, Go, Java, and PHP on RunAPI.
 </p>
 
 <div align="center">
 
 [![npm](https://img.shields.io/npm/v/@runapi.ai/imagen-4)](https://www.npmjs.com/package/@runapi.ai/imagen-4)
 [![PyPI](https://img.shields.io/pypi/v/runapi-imagen-4)](https://pypi.org/project/runapi-imagen-4/)
-[![RubyGems](https://img.shields.io/gem/v/runapi-imagen_4)](https://rubygems.org/gems/runapi-imagen_4)
+[![RubyGems](https://img.shields.io/gem/v/runapi-imagen-4)](https://rubygems.org/gems/runapi-imagen-4)
 [![Go Reference](https://pkg.go.dev/badge/github.com/runapi-ai/imagen-4-sdk/go.svg)](https://pkg.go.dev/github.com/runapi-ai/imagen-4-sdk/go)
 [![Maven Central](https://img.shields.io/maven-central/v/ai.runapi/runapi-imagen-4)](https://central.sonatype.com/artifact/ai.runapi/runapi-imagen-4)
 [![License](https://img.shields.io/github/license/runapi-ai/imagen-4-sdk)](https://github.com/runapi-ai/imagen-4-sdk/blob/main/LICENSE)
@@ -22,16 +22,16 @@
 </div>
 <br/>
 
-The Imagen 4 API SDK packages JavaScript, Python, Ruby, Go, and Java clients for Imagen 4 on RunAPI. Use it for text-to-image and remix-image workflows when your app needs typed request builders, predictable task polling, file upload helpers, account helpers, and consistent RunAPI errors.
+The Imagen 4 API SDK packages JavaScript, Python, Ruby, Go, Java, and PHP clients for Imagen 4 on RunAPI. Use it for text-to-image and remix-image workflows when your app needs typed request builders, predictable task polling, file upload helpers, account helpers, and consistent RunAPI errors.
 
-Imagen 4 is listed in the RunAPI model catalog at https://runapi.ai/models/imagen-4. Variant pages below carry pricing, rate-limit, and commercial-usage details. The public `imagen-4-sdk` repository groups the language packages, examples, CI, and release tags for this model.
+Imagen 4 is listed in the RunAPI model catalog at https://runapi.ai/models/imagen-4. Variant pages below carry pricing, rate-limit, and commercial-usage details. The public `imagen-4-sdk` repository groups the non-PHP language packages, examples, CI, and release tags for this model. The PHP package is released from a split Composer repository.
 
 ## Install
 
 ```bash
 npm install @runapi.ai/imagen-4
 pip install runapi-imagen-4
-gem install runapi-imagen_4
+gem install runapi-imagen-4
 go get github.com/runapi-ai/imagen-4-sdk/go@latest
 ```
 
@@ -61,6 +61,8 @@ dependencies {
   implementation("ai.runapi:runapi-imagen-4")
 }
 ```
+
+The PHP package is published from the split Composer repository as `runapi-ai/imagen-4`; see https://github.com/runapi-ai/imagen-4-php for PHP install and examples.
 
 ## What you can build
 
@@ -101,7 +103,7 @@ Most media endpoints are asynchronous. `create()` submits a task and returns its
 
 - `js/` publishes `@runapi.ai/imagen-4`.
 - `python/` publishes `runapi-imagen-4`.
-- `ruby/` publishes `runapi-imagen_4` when RubyGems publishing resumes.
+- `ruby/` publishes `runapi-imagen-4`.
 - `go/` publishes `github.com/runapi-ai/imagen-4-sdk/go` and depends on `github.com/runapi-ai/core-sdk/go`.
 - `java/` publishes `ai.runapi:runapi-imagen-4` and depends on `ai.runapi:runapi-core`.
 
@@ -111,6 +113,7 @@ Most media endpoints are asynchronous. `create()` submits a task and returns its
 - SDK docs: https://runapi.ai/docs#sdk-imagen-4
 - Product docs: https://runapi.ai/docs#imagen-4
 - SDK repository: https://github.com/runapi-ai/imagen-4-sdk
+- PHP package repository: https://github.com/runapi-ai/imagen-4-php
 - Skill repository: https://github.com/runapi-ai/imagen-4
 - Provider comparison: https://runapi.ai/providers/google
 - Full catalog: https://runapi.ai/models
@@ -133,7 +136,7 @@ RunAPI-generated file URLs are temporary. Download and store generated images, v
 
 ### Which package should I install for Imagen 4 work?
 
-Install the model package for your language: `@runapi.ai/imagen-4` on npm, `runapi-imagen-4` on PyPI, `runapi-imagen_4` on RubyGems, `github.com/runapi-ai/imagen-4-sdk/go`, or `ai.runapi:runapi-imagen-4`. Install core SDK packages only when you are building shared SDK infrastructure.
+Install the model package for your language: `@runapi.ai/imagen-4` on npm, `runapi-imagen-4` on PyPI, `runapi-imagen-4` on RubyGems, `github.com/runapi-ai/imagen-4-sdk/go`, `ai.runapi:runapi-imagen-4` on Maven Central, or `runapi-ai/imagen-4` on Packagist. Install core SDK packages only when you are building shared SDK infrastructure.
 
 ### Where should public links point?
 

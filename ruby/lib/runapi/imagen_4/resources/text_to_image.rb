@@ -4,7 +4,7 @@ module RunApi
   module Imagen4
     module Resources
       # Imagen 4 text-to-image generation resource.
-      # Generate images from text with three quality tiers; imagen-4-fast supports batch output.
+      # Generate images from text with three quality tiers.
       class TextToImage
         include RunApi::Core::ResourceHelpers
 
@@ -16,19 +16,19 @@ module RunApi
           @http = http
         end
 
-        def run(**params)
-          task = create(**params)
-          poll_until_complete { get(task.id) }
+        def run(options: nil, **params)
+          task = create(options: options, **params)
+          poll_until_complete { get(task.id, options: options) }
         end
 
-        def create(**params)
+        def create(options: nil, **params)
           params = compact_params(params)
           validate_params!(params)
-          request(:post, ENDPOINT, body: params)
+          request(:post, ENDPOINT, body: params, options: options)
         end
 
-        def get(id)
-          request(:get, "#{ENDPOINT}/#{id}")
+        def get(id, options: nil)
+          request(:get, "#{ENDPOINT}/#{id}", options: options)
         end
 
         private
@@ -37,10 +37,6 @@ module RunApi
           validate_contract!(CONTRACT["text-to-image"], params)
 
           raise Core::ValidationError, "prompt is required" unless param(params, :prompt)
-
-          if param(params, :output_count) && param(params, :model) != "imagen-4-fast"
-            raise Core::ValidationError, "output_count is only supported for imagen-4-fast"
-          end
         end
       end
     end

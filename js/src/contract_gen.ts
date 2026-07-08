@@ -56,9 +56,6 @@ export const contract = {
             "4:3"
           ]
         },
-        "output_count": {
-          "type": "integer"
-        },
         "seed": {
           "type": "integer"
         }
@@ -70,17 +67,9 @@ export const contract = {
             "16:9",
             "9:16",
             "3:4",
-            "4:3"
+            "4:3",
+            "auto"
           ]
-        },
-        "output_count": {
-          "enum": [
-            1,
-            2,
-            3,
-            4
-          ],
-          "type": "integer"
         },
         "seed": {
           "type": "integer"
@@ -95,9 +84,6 @@ export const contract = {
             "3:4",
             "4:3"
           ]
-        },
-        "output_count": {
-          "type": "integer"
         },
         "seed": {
           "type": "integer"

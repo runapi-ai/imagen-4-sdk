@@ -7,8 +7,12 @@ export type Imagen4RemixModel = 'imagen-4-pro-remix-image';
 /** Union of all Imagen 4 model identifiers. */
 export type Imagen4Model = Imagen4TextModel | Imagen4RemixModel;
 
+/** Aspect ratios for standard and ultra text-to-image generation. */
+export type BaseTextAspectRatio = '1:1' | '16:9' | '9:16' | '3:4' | '4:3';
+/** Aspect ratios for fast text-to-image generation. */
+export type FastTextAspectRatio = BaseTextAspectRatio | 'auto';
 /** Aspect ratios for text-to-image generation. */
-export type TextAspectRatio = '1:1' | '16:9' | '9:16' | '3:4' | '4:3';
+export type TextAspectRatio = FastTextAspectRatio;
 /** Extended aspect ratios for remix, including "auto" which infers from source images. */
 export type ProAspectRatio =
   | '1:1'
@@ -27,8 +31,6 @@ export type ProAspectRatio =
 export type OutputResolution = '1k' | '2k' | '4k';
 /** Image encoding format for remix output. */
 export type OutputFormat = 'png' | 'jpg';
-/** Batch size for imagen-4-fast (the only model supporting multi-image output). */
-export type OutputCount = 1 | 2 | 3 | 4;
 
 /**
  * Parameters for imagen-4 (standard) and imagen-4-ultra (highest quality).
@@ -40,26 +42,21 @@ export interface BaseTextTextToImageParams {
   callback_url?: string;
   /** Content to steer the model away from in the output. */
   negative_prompt?: string;
-  aspect_ratio?: TextAspectRatio;
+  aspect_ratio?: BaseTextAspectRatio;
   /** Fixed seed for reproducible generation. */
   seed?: number;
 }
 
-/**
- * Parameters for imagen-4-fast, which supports batch output (1-4 images)
- * at lower latency than the standard tier.
- */
+/** Parameters for imagen-4-fast, the lower-latency text-to-image tier. */
 export interface FastTextTextToImageParams {
   model: 'imagen-4-fast';
   prompt: string;
   callback_url?: string;
   /** Content to steer the model away from in the output. */
   negative_prompt?: string;
-  aspect_ratio?: TextAspectRatio;
+  aspect_ratio?: FastTextAspectRatio;
   /** Fixed seed for reproducible generation. */
   seed?: number;
-  /** Number of images to generate (only supported by imagen-4-fast). */
-  output_count?: OutputCount;
 }
 
 /**

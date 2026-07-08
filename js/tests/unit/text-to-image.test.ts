@@ -10,16 +10,14 @@ describe('Imagen4 textToImage', () => {
     await client.textToImage.create({
       model: 'imagen-4-fast',
       prompt: 'A warm editorial photo',
-      aspect_ratio: '16:9',
-      output_count: 2,
+      aspect_ratio: 'auto',
     });
 
     expect(request).toHaveBeenCalledWith('POST', '/api/v1/imagen_4/text_to_image', {
       body: {
         model: 'imagen-4-fast',
         prompt: 'A warm editorial photo',
-        aspect_ratio: '16:9',
-        output_count: 2,
+        aspect_ratio: 'auto',
       },
     });
   });

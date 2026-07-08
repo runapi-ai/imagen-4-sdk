@@ -42,7 +42,6 @@ import ai.runapi.imagen4.types.TextToImageResponse;
                   .model(TextToImageModel.IMAGEN_4_FAST)
                   .prompt("A small red cube on a plain white table, studio product photo")
                   .aspectRatio("1:1")
-                  .outputCount(1)
                   .callbackUrl(callbackUrl)
                   .build(),
               RequestOptions.builder()

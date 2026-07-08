@@ -22,7 +22,10 @@ func TestTextToImageCreate(t *testing.T) {
 		if body["model"] != "imagen-4-fast" {
 			t.Fatalf("unexpected model %v", body["model"])
 		}
-		if body["output_count"] != float64(2) {
+		if body["aspect_ratio"] != "auto" {
+			t.Fatalf("unexpected aspect_ratio %v", body["aspect_ratio"])
+		}
+		if _, ok := body["output_count"]; ok {
 			t.Fatalf("unexpected output_count %v", body["output_count"])
 		}
 		if _, ok := body["resolution"]; ok {
@@ -40,7 +43,7 @@ func TestTextToImageCreate(t *testing.T) {
 	resp, err := client.TextToImage.Create(context.Background(), TextToImageParams{
 		Model:       "imagen-4-fast",
 		Prompt:      "A warm editorial photo",
-		OutputCount: 2,
+		AspectRatio: "auto",
 	})
 	if err != nil {
 		t.Fatal(err)
