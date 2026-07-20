@@ -3,7 +3,7 @@
   "runapi": {
     "slug": "imagen-4"
   },
-  "version": "0.2.8",
+  "version": "0.2.9",
   "description": "RunAPI Imagen 4 SDK for text-to-image and remix-image workflows in JavaScript, Python, Ruby, Go, Java, and PHP",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -30,7 +30,7 @@
     "clean": "rm -rf dist"
   },
   "dependencies": {
-    "@runapi.ai/core": "^0.2.10"
+    "@runapi.ai/core": "^0.2.14"
   },
   "devDependencies": {
     "@types/node": "^20.0.0",

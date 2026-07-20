@@ -194,7 +194,7 @@ def test_remix_requires_source_image_urls():
 
 def test_remix_source_image_urls_max():
     client = Imagen4Client(api_key="k", http_client=FakeHttp())
-    with pytest.raises(ValidationError, match="source_image_urls supports up to 8 images"):
+    with pytest.raises(ValidationError, match="source_image_urls must contain between 1 and 8 items"):
         client.remix_image.create(
             model="imagen-4-pro-remix-image",
             prompt="hi",

@@ -17,7 +17,9 @@ module RunApi
               "enum" => ["1k", "2k", "4k"]
             },
             "source_image_urls" => {
-              "required" => true
+              "required" => true,
+              "min_items" => 1,
+              "max_items" => 8
             }
           }
         }

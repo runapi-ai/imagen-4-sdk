@@ -11,7 +11,6 @@ module RunApi
         ENDPOINT = "/api/v1/imagen_4/remix_image"
         RESPONSE_CLASS = Types::RemixImageResponse
         COMPLETED_RESPONSE_CLASS = Types::CompletedRemixImageResponse
-        SOURCE_IMAGE_URLS_MAX = 8
 
         def initialize(http)
           @http = http
@@ -38,11 +37,6 @@ module RunApi
           validate_contract!(CONTRACT["remix-image"], params)
 
           raise Core::ValidationError, "prompt is required" unless param(params, :prompt)
-
-          urls = param(params, :source_image_urls)
-          return unless urls.respond_to?(:size) && urls.size > SOURCE_IMAGE_URLS_MAX
-
-          raise Core::ValidationError, "source_image_urls supports up to #{SOURCE_IMAGE_URLS_MAX} images"
         end
       end
     end

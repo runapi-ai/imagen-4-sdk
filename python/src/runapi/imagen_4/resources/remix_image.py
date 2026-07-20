@@ -21,8 +21,6 @@ class RemixImage(Resource):
     RESPONSE_CLASS = RemixImageResponse
     COMPLETED_RESPONSE_CLASS = CompletedRemixImageResponse
 
-    SOURCE_IMAGE_URLS_MAX = 8
-
     def run(self, options: Optional[RequestOptions] = None, **params: Any) -> Any:
         """Remix source images and poll until it completes.
 
@@ -63,7 +61,3 @@ class RemixImage(Resource):
     def _validate_params(self, params: Dict[str, Any]) -> None:
         if not params.get("prompt"):
             raise ValidationError("prompt is required")
-
-        urls = params.get("source_image_urls")
-        if hasattr(urls, "__len__") and len(urls) > self.SOURCE_IMAGE_URLS_MAX:
-            raise ValidationError(f"source_image_urls supports up to {self.SOURCE_IMAGE_URLS_MAX} images")

@@ -4,20 +4,22 @@ build-backend = "hatchling.build"
 
 [project]
 name = "runapi-imagen-4"
-version = "0.1.1"
+version = "0.1.2"
 description = "RunAPI Imagen 4 SDK for text-to-image and remix-image workflows in JavaScript, Python, Ruby, Go, Java, and PHP"
 readme = "README.md"
 requires-python = ">=3.9"
 license = "Apache-2.0"
 authors = [{ name = "RunAPI", email = "contact@runapi.ai" }]
 keywords = ["runapi", "runapi-ai", "imagen-4", "api", "sdk", "typescript", "python", "ruby", "golang", "java", "maven", "gradle", "image-generation", "text-to-image", "image-api", "imagen-api"]
-dependencies = ["runapi-core>=0.1.3"]
+dependencies = ["runapi-core>=0.2.1"]
 
 [project.urls]
 Homepage = "https://runapi.ai/models/imagen-4"
 Documentation = "https://runapi.ai/docs#sdk-imagen-4"
 Source = "https://github.com/runapi-ai/imagen-4-sdk"
 Issues = "https://github.com/runapi-ai/imagen-4-sdk/issues"
+Changelog = "https://github.com/runapi-ai/imagen-4-sdk/blob/main/CHANGELOG.md"
+"Release Notes" = "https://github.com/runapi-ai/imagen-4-sdk/releases/tag/python%2Fv0.1.2"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/runapi"]

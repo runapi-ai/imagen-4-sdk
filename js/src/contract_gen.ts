@@ -34,7 +34,9 @@ export const contract = {
           ]
         },
         "source_image_urls": {
-          "required": true
+          "required": true,
+          "min_items": 1,
+          "max_items": 8
         }
       }
     }

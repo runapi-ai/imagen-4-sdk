@@ -1,5 +1,11 @@
 # Changelog
 
+## [js/v0.2.9](https://github.com/runapi-ai/imagen-4-sdk/releases/tag/js%2Fv0.2.9), [ruby/v0.2.9](https://github.com/runapi-ai/imagen-4-sdk/releases/tag/ruby%2Fv0.2.9), [go/v0.2.9](https://github.com/runapi-ai/imagen-4-sdk/releases/tag/go%2Fv0.2.9), [python/v0.1.2](https://github.com/runapi-ai/imagen-4-sdk/releases/tag/python%2Fv0.1.2) - 2026-07-20
+
+### Changed
+- Validate that Imagen 4 remix requests contain between 1 and 8 source images.
+
+
 ## [js/v0.2.8](https://github.com/runapi-ai/imagen-4-sdk/releases/tag/js%2Fv0.2.8), [ruby/v0.2.8](https://github.com/runapi-ai/imagen-4-sdk/releases/tag/ruby%2Fv0.2.8), [go/v0.2.8](https://github.com/runapi-ai/imagen-4-sdk/releases/tag/go%2Fv0.2.8), [python/v0.1.1](https://github.com/runapi-ai/imagen-4-sdk/releases/tag/python%2Fv0.1.1), [java/v0.1.2](https://github.com/runapi-ai/imagen-4-sdk/releases/tag/java%2Fv0.1.2) - 2026-07-08
 
 ### Changed

@@ -3,6 +3,8 @@ plugins {
   `maven-publish`
 }
 
+extra["runapiSlug"] = "imagen-4"
+
 description = "RunAPI Imagen 4 Java SDK for Imagen 4 workflows."
 
 java {
@@ -11,7 +13,7 @@ java {
 }
 
 dependencies {
-  api("ai.runapi:runapi-core:0.1.4")
+  api("ai.runapi:runapi-core:0.2.2")
 
   testImplementation(platform("org.junit:junit-bom:5.10.3"))
   testImplementation("org.junit.jupiter:junit-jupiter")
