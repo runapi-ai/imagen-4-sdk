@@ -110,8 +110,8 @@ Most media endpoints are asynchronous. `create()` submits a task and returns its
 ## Public links
 
 - Model page: https://runapi.ai/models/imagen-4
-- SDK docs: https://runapi.ai/docs#sdk-imagen-4
-- Product docs: https://runapi.ai/docs#imagen-4
+- SDK docs: https://runapi.ai/docs/resources/sdks
+- Product docs: https://runapi.ai/docs/api/imagen-4/text-to-image
 - SDK repository: https://github.com/runapi-ai/imagen-4-sdk
 - PHP package repository: https://github.com/runapi-ai/imagen-4-php
 - Skill repository: https://github.com/runapi-ai/imagen-4
