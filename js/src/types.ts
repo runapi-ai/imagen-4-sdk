@@ -1,4 +1,4 @@
-import type { AsyncTaskStatus } from '@runapi.ai/core';
+import type { AsyncTaskStatus, TaskResponse } from '@runapi.ai/core';
 
 /** Text-to-image model variants differing by quality and latency. */
 export type Imagen4TextModel = 'imagen-4' | 'imagen-4-fast' | 'imagen-4-ultra';
@@ -76,7 +76,7 @@ export interface RemixImageParams {
 
 export type TextToImageParams = BaseTextTextToImageParams | FastTextTextToImageParams;
 
-export interface TaskCreateResponse {
+export interface TaskCreateResponse extends TaskResponse {
   id: string;
   status: AsyncTaskStatus;
 }
@@ -88,7 +88,7 @@ export interface Image {
   origin_url?: string;
 }
 
-export interface TextToImageResponse {
+export interface TextToImageResponse extends TaskResponse {
   id: string;
   status: AsyncTaskStatus;
   images?: Image[];

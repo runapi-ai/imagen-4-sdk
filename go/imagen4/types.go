@@ -1,5 +1,7 @@
 package imagen4
 
+import "github.com/runapi-ai/core-sdk/go/core"
+
 // Model selects the Imagen 4 variant. Available models differ by endpoint;
 // text-to-image accepts "imagen-4", "imagen-4-fast", and "imagen-4-ultra",
 // while remix-image uses "imagen-4-pro-remix-image".
@@ -45,6 +47,7 @@ type RemixImageParams struct {
 
 // AsyncTaskResponse carries the task ID, lifecycle status, and error for all Imagen 4 async operations.
 type AsyncTaskResponse struct {
+	core.TaskBillingFacts
 	ID     string     `json:"id"`
 	Status TaskStatus `json:"status"`
 	Error  string     `json:"error,omitempty"`
