@@ -4,7 +4,7 @@
 
 The Imagen 4 Java SDK is the language-specific package for Imagen 4 on RunAPI. Use it when your Java application needs typed builders, strict request validation, task status lookup, local polling helpers, file uploads, account helpers, and consistent RunAPI errors for Imagen 4 workflows.
 
-This README is the Java package guide inside the public `imagen-4-sdk` repository. For the repository overview, start at `../README.md`; for model details, use https://runapi.ai/models/imagen-4; for API reference, use https://runapi.ai/docs#imagen-4; for SDK docs, use https://runapi.ai/docs#sdk-imagen-4.
+This README is the Java package guide inside the public `imagen-4-sdk` repository. For the repository overview, start at `../README.md`; for model details, use https://runapi.ai/models/imagen-4; for API reference, use https://runapi.ai/docs/api/imagen-4/text-to-image; for SDK docs, use https://runapi.ai/docs/resources/sdks.
 
 ## Requirements
 
@@ -175,8 +175,8 @@ try {
 ## Links
 
 - Model page: https://runapi.ai/models/imagen-4
-- SDK docs: https://runapi.ai/docs#sdk-imagen-4
-- Product docs: https://runapi.ai/docs#imagen-4
+- SDK docs: https://runapi.ai/docs/resources/sdks
+- Product docs: https://runapi.ai/docs/api/imagen-4/text-to-image
 - Pricing and rate limits: https://runapi.ai/models/imagen-4/imagen-4
 - Full catalog: https://runapi.ai/models
 - Repository: https://github.com/runapi-ai/imagen-4-sdk

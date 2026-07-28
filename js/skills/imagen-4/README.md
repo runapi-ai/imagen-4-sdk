@@ -60,8 +60,8 @@ const result = await client.textToImage.run({
 ## Routing
 
 - Model page: https://runapi.ai/models/imagen-4
-- Product docs: https://runapi.ai/docs#imagen-4
-- SDK docs: https://runapi.ai/docs#sdk-imagen-4
+- Product docs: https://runapi.ai/docs/api/imagen-4/text-to-image
+- SDK docs: https://runapi.ai/docs/resources/sdks
 - SDK repository: https://github.com/runapi-ai/imagen-4-sdk
 - Pricing and rate limits: https://runapi.ai/models/imagen-4/imagen-4
 - Browse all RunAPI models and skills: https://runapi.ai/models

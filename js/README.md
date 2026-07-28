@@ -2,7 +2,7 @@
 
 The Imagen 4 JavaScript SDK is the language-specific package for Imagen 4 on RunAPI. Use this package for image generation, image editing, and creative production workflows when your application needs request bodies, task status lookup, and consistent RunAPI errors in JavaScript.
 
-This README is the JavaScript package guide inside the public `imagen-4-sdk` repository. For the repository overview, start at `../README.md`; for model details, use https://runapi.ai/models/imagen-4; for API reference, use https://runapi.ai/docs#imagen-4; for SDK docs, use https://runapi.ai/docs#sdk-imagen-4.
+This README is the JavaScript package guide inside the public `imagen-4-sdk` repository. For the repository overview, start at `../README.md`; for model details, use https://runapi.ai/models/imagen-4; for API reference, use https://runapi.ai/docs/api/imagen-4/text-to-image; for SDK docs, use https://runapi.ai/docs/resources/sdks.
 
 ## Install
 
@@ -17,7 +17,7 @@ import { Imagen4Client } from '@runapi.ai/imagen-4';
 
 const client = new Imagen4Client();
 const task = await client.textToImage.create({
-  // Pass the Imagen 4 JSON request body from https://runapi.ai/docs#imagen-4.
+  // Pass the Imagen 4 JSON request body from https://runapi.ai/docs/api/imagen-4/text-to-image.
 });
 const status = await client.textToImage.get(task.id);
 ```
@@ -33,8 +33,8 @@ Use the TypeScript types in `src/types.ts` and the resource classes under `src/r
 ## Links
 
 - Model page: https://runapi.ai/models/imagen-4
-- SDK docs: https://runapi.ai/docs#sdk-imagen-4
-- Product docs: https://runapi.ai/docs#imagen-4
+- SDK docs: https://runapi.ai/docs/resources/sdks
+- Product docs: https://runapi.ai/docs/api/imagen-4/text-to-image
 - Pricing and rate limits: https://runapi.ai/models/imagen-4/imagen-4
 - Provider comparison: https://runapi.ai/providers/google
 - Full catalog: https://runapi.ai/models
