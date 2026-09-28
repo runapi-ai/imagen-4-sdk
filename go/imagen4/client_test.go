@@ -43,8 +43,7 @@ func TestTextToImageCreate(t *testing.T) {
 	resp, err := client.TextToImage.Create(context.Background(), TextToImageParams{
 		Model:       "imagen-4-fast",
 		Prompt:      "A warm editorial photo",
-		AspectRatio: "auto",
-	})
+		AspectRatio: "auto"})
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -59,7 +58,7 @@ func TestTextToImageGetDecodesImages(t *testing.T) {
 			t.Fatalf("unexpected request %s %s", r.Method, r.URL.Path)
 		}
 		w.Header().Set("Content-Type", "application/json")
-		_, _ = w.Write([]byte(`{"id":"task_123","status":"completed","images":[{"url":"https://file.runapi.ai/generated/image.png"}]}`))
+		_, _ = w.Write([]byte(`{"id":"task_123","status":"completed", "usage": {"cost": 0.05},"images":[{"url":"https://file.runapi.ai/generated/image.png"}]}`))
 	}))
 	defer server.Close()
 
@@ -111,8 +110,7 @@ func TestRemixImageCreate(t *testing.T) {
 		Model:            "imagen-4-pro-remix-image",
 		Prompt:           "Restyle this image",
 		SourceImageURLs:  []string{"https://upload.wikimedia.org/wikipedia/commons/a/a9/Example.jpg"},
-		OutputResolution: "2k",
-	})
+		OutputResolution: "2k"})
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -127,7 +125,7 @@ func TestRemixImageGetDecodesImages(t *testing.T) {
 			t.Fatalf("unexpected request %s %s", r.Method, r.URL.Path)
 		}
 		w.Header().Set("Content-Type", "application/json")
-		_, _ = w.Write([]byte(`{"id":"task_456","status":"completed","images":[{"url":"https://file.runapi.ai/remixed/image.png"}]}`))
+		_, _ = w.Write([]byte(`{"id":"task_456","status":"completed", "usage": {"cost": 0.05},"images":[{"url":"https://file.runapi.ai/remixed/image.png"}]}`))
 	}))
 	defer server.Close()
 

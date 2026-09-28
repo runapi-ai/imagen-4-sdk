@@ -78,8 +78,7 @@ def test_create_posts_compacted_body():
     client = Imagen4Client(api_key="k", http_client=fake)
     result = client.text_to_image.create(model="imagen-4", prompt="hello world", aspect_ratio="1:1")
     assert fake.calls == [
-        ("post", "/api/v1/imagen_4/text_to_image", {"model": "imagen-4", "prompt": "hello world", "aspect_ratio": "1:1"}),
-    ]
+        ("post", "/api/v1/imagen_4/text_to_image", {"model": "imagen-4", "prompt": "hello world", "aspect_ratio": "1:1"})]
     assert isinstance(result, TextToImageResponse)
 
 
@@ -107,17 +106,15 @@ def test_remix_create_posts_compacted_body():
                 "model": "imagen-4-pro-remix-image",
                 "prompt": "golden hour",
                 "source_image_urls": ["https://x/a.png"],
-                "output_resolution": "2k",
-            },
-        ),
-    ]
+                "output_resolution": "2k"},
+        )]
     assert isinstance(result, RemixImageResponse)
 
 
 def test_run_narrows_completed_type():
     fake = FakeHttp(
         {"id": "t1", "status": "pending"},
-        {"id": "t1", "status": "completed", "images": [{"url": "https://x/y.png"}]},
+        {"id": "t1", "status": "completed", "usage": {"cost": 0.05}, "images": [{"url": "https://x/y.png"}]},
     )
     client = Imagen4Client(api_key="k", http_client=fake)
     result = client.text_to_image.run(model="imagen-4", prompt="a serene lake")
@@ -128,7 +125,7 @@ def test_run_narrows_completed_type():
 def test_remix_run_narrows_completed_type():
     fake = FakeHttp(
         {"id": "t1", "status": "pending"},
-        {"id": "t1", "status": "completed", "images": [{"url": "https://x/y.png"}]},
+        {"id": "t1", "status": "completed", "usage": {"cost": 0.05}, "images": [{"url": "https://x/y.png"}]},
     )
     client = Imagen4Client(api_key="k", http_client=fake)
     result = client.remix_image.run(
