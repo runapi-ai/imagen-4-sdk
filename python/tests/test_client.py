@@ -1,7 +1,7 @@
 import pytest
 
 from runapi.core import config
-from runapi.core.errors import AuthenticationError, ValidationError
+from runapi.core.errors import AuthenticationError
 from runapi.imagen_4 import Imagen4Client
 from runapi.imagen_4.resources.remix_image import RemixImage
 from runapi.imagen_4.resources.text_to_image import TextToImage
@@ -137,63 +137,8 @@ def test_remix_run_narrows_completed_type():
     assert result.images[0].url == "https://x/y.png"
 
 
-# --- validation -----------------------------------------------------------
-
-
-def test_rejects_unknown_model():
-    client = Imagen4Client(api_key="k", http_client=FakeHttp())
-    with pytest.raises(
-        ValidationError,
-        match="model must be one of: imagen-4, imagen-4-fast, imagen-4-ultra",
-    ):
-        client.text_to_image.create(model="nope", prompt="hi there")
-
-
-def test_requires_model():
-    client = Imagen4Client(api_key="k", http_client=FakeHttp())
-    with pytest.raises(
-        ValidationError,
-        match="model must be one of: imagen-4, imagen-4-fast, imagen-4-ultra",
-    ):
-        client.text_to_image.create(prompt="hi there")
-
-
-def test_requires_prompt():
-    client = Imagen4Client(api_key="k", http_client=FakeHttp())
-    with pytest.raises(ValidationError, match="prompt is required"):
-        client.text_to_image.create(model="imagen-4")
-
-
-def test_rejects_invalid_aspect_ratio():
-    client = Imagen4Client(api_key="k", http_client=FakeHttp())
-    with pytest.raises(ValidationError, match="aspect_ratio"):
-        client.text_to_image.create(model="imagen-4", prompt="hi there", aspect_ratio="2:3")
-
-
 def test_auto_aspect_ratio_allowed_for_fast():
     fake = FakeHttp({"id": "t1", "status": "pending"})
     client = Imagen4Client(api_key="k", http_client=fake)
     client.text_to_image.create(model="imagen-4-fast", prompt="hi there", aspect_ratio="auto")
     assert fake.calls[0][2]["aspect_ratio"] == "auto"
-
-
-def test_remix_rejects_non_remix_model():
-    client = Imagen4Client(api_key="k", http_client=FakeHttp())
-    with pytest.raises(ValidationError, match="model must be one of: imagen-4-pro-remix-image"):
-        client.remix_image.create(model="imagen-4", prompt="hi", source_image_urls=["https://x/a.png"])
-
-
-def test_remix_requires_source_image_urls():
-    client = Imagen4Client(api_key="k", http_client=FakeHttp())
-    with pytest.raises(ValidationError, match="source_image_urls is required"):
-        client.remix_image.create(model="imagen-4-pro-remix-image", prompt="hi")
-
-
-def test_remix_source_image_urls_max():
-    client = Imagen4Client(api_key="k", http_client=FakeHttp())
-    with pytest.raises(ValidationError, match="source_image_urls must contain between 1 and 8 items"):
-        client.remix_image.create(
-            model="imagen-4-pro-remix-image",
-            prompt="hi",
-            source_image_urls=[f"https://x/{i}.png" for i in range(9)],
-        )

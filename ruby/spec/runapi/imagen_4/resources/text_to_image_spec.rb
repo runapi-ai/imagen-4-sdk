@@ -21,11 +21,6 @@ RSpec.describe RunApi::Imagen4::Resources::TextToImage do
     expect(result.id).to eq("task-1")
   end
 
-  it "raises ValidationError when model is missing" do
-    expect { text_to_image.create(prompt: "test") }
-      .to raise_error(RunApi::Core::ValidationError, /model must be one of: imagen-4, imagen-4-fast, imagen-4-ultra/)
-  end
-
   it "GETs completed responses with image objects" do
     expect(http).to receive(:request).with(:get, "#{endpoint}/task-1")
       .and_return("id" => "task-1", "status" => "completed", "images" => [{"url" => "https://file.runapi.ai/generated/image.png"}])

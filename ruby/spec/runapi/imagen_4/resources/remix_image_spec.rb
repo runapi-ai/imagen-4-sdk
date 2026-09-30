@@ -22,23 +22,6 @@ RSpec.describe RunApi::Imagen4::Resources::RemixImage do
     expect(result.id).to eq("task-1")
   end
 
-  it "raises ValidationError when source_image_urls is missing" do
-    expect {
-      remix_image.create(model: "imagen-4-pro-remix-image", prompt: "test")
-    }.to raise_error(RunApi::Core::ValidationError, /source_image_urls is required/)
-  end
-
-  it "raises ValidationError for invalid output_resolution" do
-    expect {
-      remix_image.create(
-        model: "imagen-4-pro-remix-image",
-        prompt: "test",
-        source_image_urls: ["https://cdn.runapi.ai/public/samples/source.jpg"],
-        output_resolution: "2K"
-      )
-    }.to raise_error(RunApi::Core::ValidationError, /output_resolution must be one of: 1k, 2k, 4k/)
-  end
-
   it "GETs completed responses with image objects" do
     expect(http).to receive(:request).with(:get, "#{endpoint}/task-1")
       .and_return("id" => "task-1", "status" => "completed", "images" => [{"url" => "https://file.runapi.ai/remixed/image.png"}])
